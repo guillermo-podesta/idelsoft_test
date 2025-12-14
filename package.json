@@ -1,0 +1,31 @@
+{
+  "name": "bookcart-automation-framework",
+  "version": "1.0.0",
+  "description": "Playwright TypeScript Automation Framework for BookCart Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --grep @ui",
+    "test:api": "playwright test --grep @api",
+    "test:integration": "playwright test --grep @integration",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "test:codegen": "playwright codegen https://bookcart.azurewebsites.net"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "automation",
+    "testing",
+    "e2e",
+    "api-testing"
+  ],
+  "author": "SDET Team",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.1",
+    "typescript": "^5.9.3"
+  }
+}
