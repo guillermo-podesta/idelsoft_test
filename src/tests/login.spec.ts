@@ -18,7 +18,7 @@ test.describe('Login Tests', () => {
     await page.locator('mat-card:has-text("Add to Cart")').first().waitFor({ state: 'visible', timeout: 20000 });
   });
 
-  test('TC1: Username blank in Login', async ({ page }) => {
+  test('TC1: Username blank in Login @ui @functional @regression', async ({ page }) => {
     await loginPage.clickAtLoginButton();
     await loginPage.usernameInput.waitFor({ state: 'visible', timeout: 10000 });
 
@@ -29,7 +29,7 @@ test.describe('Login Tests', () => {
     await expect(page.getByText('Username is required')).toBeVisible();
   });
 
-  test('TC2: Password blank in Login', async ({ page }) => {
+  test('TC2: Password blank in Login @ui @functional @regression', async ({ page }) => {
     await loginPage.clickAtLoginButton();
     await loginPage.usernameInput.waitFor({ state: 'visible', timeout: 10000 });
     
@@ -40,7 +40,7 @@ test.describe('Login Tests', () => {
     await expect(page.getByText('Password is required')).toBeVisible();
   });
 
-  test('TC3: Login button is enabled', async () => {
+  test('TC3: Login button is enabled @ui @functional @regression', async () => {
     await loginPage.clickAtLoginButton();
         
     await expect(loginPage.loginSubmitButton).toBeEnabled();
