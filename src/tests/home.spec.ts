@@ -33,7 +33,7 @@ test.describe('Home Page Tests', () => {
     expect(bookCount).not.toBe(6);
   });
 
-  test('TC6: Search for a valid book @ui @functional @regression', async ({ page }) => {
+  test('TC6: Search for a valid book @ui @functional @regression @smoke', async ({ page }) => {
     test.setTimeout(60000);
     const searchResult = page.getByRole('option', { name: '1984' });
     

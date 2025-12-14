@@ -40,7 +40,7 @@ test.describe('Login Tests', () => {
     await expect(page.getByText('Password is required')).toBeVisible();
   });
 
-  test('TC3: Login button is enabled @ui @functional @regression', async () => {
+  test('TC3: Login button is enabled @ui @functional @regression @smoke', async () => {
     await loginPage.clickAtLoginButton();
         
     await expect(loginPage.loginSubmitButton).toBeEnabled();
