@@ -18,7 +18,7 @@ test.describe('Book Summary Page Tests', () => {
     await page.locator('mat-card:has-text("Add to Cart")').first().waitFor({ state: 'visible', timeout: 20000 });
   });
 
-  test('TC7: Validate book elements from summary page', async () => {
+  test('TC7: Validate book elements from summary page @ui @functional @regression', async () => {
     await homePage.clickAtBookCard("1984");
     
     await bookSummaryPage.bookTitle.waitFor({ state: 'visible', timeout: 10000 });
@@ -30,7 +30,7 @@ test.describe('Book Summary Page Tests', () => {
     expect(bookSummaryPage.addToCartButton).toBeVisible();
   });
 
-  test('TC9: Add book to cart from summary page', async ({ page }) => {
+  test('TC9: Add book to cart from summary page @ui @functional @regression @integration', async ({ page }) => {
     await homePage.clickAtBookCard("1984");
     await bookSummaryPage.bookTitle.waitFor({ state: 'visible', timeout: 10000 });
 
@@ -39,7 +39,7 @@ test.describe('Book Summary Page Tests', () => {
     await expect(page.getByText('One Item added to cart')).toBeVisible();
   });
 
-  test('TC10: Validate that the summary page url is correct', async ({ page, baseURL }) => {
+  test('TC10: Validate that the summary page url is correct @ui @functional @regression', async ({ page, baseURL }) => {
     await homePage.clickAtBookCard("1984");
     
     await expect(page).toHaveURL(`${baseURL}/books/details/3`);

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('API Tests', () => {
 
-  test('TC11: api/book should return 500', async ({ request, baseURL }) => {
+  test('TC11: api/book should return 500 @api @negative', async ({ request, baseURL }) => {
     const response = await request.get(`${baseURL}/api/book`, {
       headers: {
         'content-type': 'application/json'
@@ -13,7 +13,7 @@ test.describe('API Tests', () => {
     expect(response.ok()).toBeFalsy();
   });
 
-  test('TC12: Verify api/login returns 401 when invalid credentials are given', async ({ request, baseURL }) => {
+  test('TC12: Verify api/login returns 401 when invalid credentials are given @api @negative', async ({ request, baseURL }) => {
     const response = await request.post(`${baseURL}/api/login`, {
       headers: {
         'content-type': 'application/json'
@@ -28,7 +28,7 @@ test.describe('API Tests', () => {
     expect(response.ok()).toBeFalsy();
   });
 
-  test('TC13: Verify that GetCategoriesList returns 200 OK and a list of categories', async ({ request, baseURL }) => {
+  test('TC13: Verify that GetCategoriesList returns 200 OK and a list of categories @api @positive', async ({ request, baseURL }) => {
     const response = await request.get(`${baseURL}/api/book//GetCategoriesList`, {
       headers: {
         'content-type': 'application/json'
@@ -46,7 +46,7 @@ test.describe('API Tests', () => {
     expect(categories[0]).toHaveProperty('categoryName');
   });
 
-  test('TC14: Verify that creating a user via /api/user returns 200 OK with valid data', async ({ request, baseURL }) => {
+  test('TC14: Verify that creating a user via /api/user returns 200 OK with valid data @api @functional @positive', async ({ request, baseURL }) => {
     const response = await request.post(`${baseURL}/api/user/`, {
       headers: {
         'Content-Type': 'application/json'

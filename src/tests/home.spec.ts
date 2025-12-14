@@ -15,7 +15,7 @@ test.describe('Home Page Tests', () => {
     await page.locator('mat-card:has-text("Add to Cart")').first().waitFor({ state: 'visible', timeout: 20000 });
   });
 
-  test('TC4: The books amount should be 5 in total', async ({ page }) => {
+  test('TC4: The books amount should be 5 in total @ui @functional @regression', async ({ page }) => {
     test.setTimeout(60000);
     
     const bookCardsLocator = page.locator('mat-card:has-text("Add to Cart")');
@@ -24,7 +24,7 @@ test.describe('Home Page Tests', () => {
     expect(bookCount).toBe(5);
   });
 
-  test('TC5: The books amount should not be 6', async ({ page }) => {
+  test('TC5: The books amount should not be 6 @ui @functional @regression', async ({ page }) => {
     test.setTimeout(60000);
     
     const bookCardsLocator = page.locator('mat-card:has-text("Add to Cart")');
@@ -33,7 +33,7 @@ test.describe('Home Page Tests', () => {
     expect(bookCount).not.toBe(6);
   });
 
-  test('TC6: Search for a valid book', async ({ page }) => {
+  test('TC6: Search for a valid book @ui @functional @regression', async ({ page }) => {
     test.setTimeout(60000);
     const searchResult = page.getByRole('option', { name: '1984' });
     
@@ -49,7 +49,7 @@ test.describe('Home Page Tests', () => {
     expect(page.getByRole('link', { name: '1984' })).toBeVisible();
   });
 
-  test('TC8: Validate each book price', async ({ page }) => {
+  test('TC8: Validate each book price @ui @functional @regression', async ({ page }) => {
     await expect(page.getByRole('paragraph').filter({ hasText: '₹19.99' })).toBeVisible();
     await expect(page.getByRole('paragraph').filter({ hasText: '₹29.99' })).toBeVisible();
     await expect(page.getByRole('paragraph').filter({ hasText: '₹14.99' })).toBeVisible();
