@@ -16,7 +16,15 @@ export default defineConfig({
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
     ['json', { outputFile: 'test-results/results.json' }],
     ['junit', { outputFile: 'test-results/junit.xml' }],
-    ['list']
+    ['list'],
+    [
+      "@estruyf/github-actions-reporter",
+      {
+        title: "Tests Results",
+        useDetails: true,
+        showError: true
+      }
+    ]
   ],
   
   use: {
