@@ -59,19 +59,5 @@ export class HomePage extends BasePage {
     await this.clickElement(categoryButton);
     await this.waitForPageLoad();
   }
-
-  async isLoggedIn(): Promise<boolean> {
-    const logoutButton = this.page.locator('button:has-text("Logout")');
-    return await this.isElementVisible(logoutButton);
-  }
-
-  async getCartItemCount(): Promise<number> {
-    const cartBadge = this.page.locator('mat-icon:has-text("shopping_cart") + span');
-    if (await this.isElementVisible(cartBadge)) {
-      const count = await cartBadge.textContent();
-      return parseInt(count || '0');
-    }
-    return 0;
-  }
 }
 

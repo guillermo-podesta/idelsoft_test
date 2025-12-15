@@ -33,8 +33,4 @@ export class LoginPage extends BasePage {
     await this.passwordInput.fill(password);
     await this.loginSubmitButton.click();
   }
-
-  async isLoggedIn(): Promise<boolean> {
-    return this.page.url().includes('/home');
-  }
 }
