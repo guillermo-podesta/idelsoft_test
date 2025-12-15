@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import os from "node:os";
+import environmentVariables from './src/utils/environment-variables';
 
 export default defineConfig({
   testDir: './src/tests',
@@ -28,7 +29,7 @@ export default defineConfig({
   ],
   
   use: {
-    baseURL: 'https://bookcart.azurewebsites.net',
+    baseURL: environmentVariables.BOOKCART_APP_URL,
     
     trace: 'on-first-retry',
     
