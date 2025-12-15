@@ -147,8 +147,28 @@ This will install all required packages including:
 - `@estruyf/github-actions-reporter` - GitHub Actions reporter for CI/CD
 - `typescript` - TypeScript compiler
 - `@types/node` - Node.js type definitions
+- `zod` - TypeScript-first schema validation library
+- `dotenv` - Environment variable management
 
-### 4. Install Playwright Browsers
+### 4. Configure Environment Variables
+
+Create a `.env` file in the project root (use `.env.example` as reference):
+
+```bash
+# BookCart Application URL
+BOOKCART_APP_URL=https://bookcart.azurewebsites.net
+
+# Test User Credentials
+BOOKCART_TEST_USER_EMAIL=testuser@example.com
+BOOKCART_TEST_USER_PASSWORD=TestPassword123
+
+# Test Environment
+TEST_ENVIRONMENT=production
+```
+
+**Note:** The `.env` file is gitignored. See `.env.example` for the template.
+
+### 5. Install Playwright Browsers
 ```bash
 npx playwright install
 ```
@@ -158,7 +178,7 @@ Or install only Chromium (faster):
 npx playwright install chromium
 ```
 
-### 5. Verify Installation
+### 6. Verify Installation
 Run the test suite to ensure everything is set up correctly:
 ```bash
 npm test
