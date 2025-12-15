@@ -23,14 +23,5 @@ export class BasePage {
     await this.waitForElement(locator);
     await locator.click();
   }
-
-  async isElementVisible(locator: Locator): Promise<boolean> {
-    try {
-      await locator.waitFor({ state: 'visible', timeout: 2000 });
-      return true;
-    } catch {
-      return false;
-    }
-  }
 }
 
