@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project contains **14 automated test cases** for the BookCart application, following the test plan specified in `Test cases for book site - Hoja 1.csv`.
+This project contains **14 automated test cases** for the BookCart application.
 
 ---
 
@@ -198,21 +198,6 @@ Configuration file: `playwright.config.ts`
 
 ---
 
-## ✨ Key Features
-
-- ✅ **14 comprehensive test cases** covering UI, Functional, and API
-- ✅ **Organized test structure** - modular spec files by feature
-- ✅ **Tag-based test execution** - run by `@ui`, `@api`, `@smoke`, etc.
-- ✅ **Page Object Model** - maintainable and reusable page classes
-- ✅ **API mocking** - reliable tests with mock data
-- ✅ **TypeScript** - type-safe test code
-- ✅ **CI/CD ready** - GitHub Actions workflow included
-- ✅ **GitHub Actions Reporter** - enhanced test results in CI
-- ✅ **Multiple reporters** - HTML, JSON, JUnit, List
-- ✅ **Cross-browser support** - Chromium, Firefox, WebKit
-
----
-
 ## 🔧 CI/CD Integration
 
 ### GitHub Actions Reporter
@@ -294,8 +279,3 @@ npx tsc --noEmit
 - [GitHub Actions Reporter](https://github.com/estruyf/playwright-github-actions-reporter)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 
----
-
-## 📄 License
-
-ISC
