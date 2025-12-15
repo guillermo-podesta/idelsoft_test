@@ -1,14 +1,26 @@
 name: Playwright Tests CI/CD
 
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
   schedule:
     # Run tests every day at 2 AM UTC
     - cron: '0 2 * * *'
   workflow_dispatch:
+    inputs:
+      test_tag:
+        description: 'Select which tests to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ui
+          - api
+          - smoke
+          - regression
+          - functional
+          - integration
 
 jobs:
   test:
@@ -37,15 +49,43 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Run UI Tests
+      - name: Run Tests (Manual Dispatch)
+        if: github.event_name == 'workflow_dispatch' && inputs.test_tag != 'all'
+        run: |
+          case "${{ inputs.test_tag }}" in
+            ui)
+              npm run test:ui
+              ;;
+            api)
+              npm run test:api
+              ;;
+            smoke)
+              npm run test:smoke
+              ;;
+            regression)
+              npm run test:regression
+              ;;
+            functional)
+              npm run test:functional
+              ;;
+            integration)
+              npm run test:integration
+              ;;
+          esac
+        continue-on-error: true
+
+      - name: Run UI Tests (Automated)
+        if: github.event_name != 'workflow_dispatch'
         run: npm run test:ui
         continue-on-error: true
 
-      - name: Run API Tests
+      - name: Run API Tests (Automated)
+        if: github.event_name != 'workflow_dispatch'
         run: npm run test:api
         continue-on-error: true
 
-      - name: Run Integration Tests
+      - name: Run Integration Tests (Automated)
+        if: github.event_name != 'workflow_dispatch'
         run: npm run test:integration
         continue-on-error: true
 
@@ -96,13 +136,35 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Run All Tests
+      - name: Run All Tests (Automated or Manual 'all')
+        if: github.event_name != 'workflow_dispatch' || inputs.test_tag == 'all'
         run: npm test
         continue-on-error: true
 
-      - name: Generate HTML Report
-        if: always()
-        run: npx playwright show-report playwright-report --host 0.0.0.0
+      - name: Run Selected Tests (Manual Dispatch)
+        if: github.event_name == 'workflow_dispatch' && inputs.test_tag != 'all'
+        run: |
+          case "${{ inputs.test_tag }}" in
+            ui)
+              npm run test:ui
+              ;;
+            api)
+              npm run test:api
+              ;;
+            smoke)
+              npm run test:smoke
+              ;;
+            regression)
+              npm run test:regression
+              ;;
+            functional)
+              npm run test:functional
+              ;;
+            integration)
+              npm run test:integration
+              ;;
+          esac
+        continue-on-error: true
 
       - name: Upload Final Report
         if: always()
@@ -135,4 +197,7 @@ jobs:
           echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "**Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "**Test Tag:** ${{ inputs.test_tag }}" >> $GITHUB_STEP_SUMMARY
+          fi
 
