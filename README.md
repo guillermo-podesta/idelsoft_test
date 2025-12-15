@@ -147,8 +147,6 @@ This will install all required packages including:
 - `@estruyf/github-actions-reporter` - GitHub Actions reporter for CI/CD
 - `typescript` - TypeScript compiler
 - `@types/node` - Node.js type definitions
-- `zod` - TypeScript-first schema validation library
-- `dotenv` - Environment variable management
 
 ### 4. Install Playwright Browsers
 ```bash
