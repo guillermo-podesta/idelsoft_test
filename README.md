@@ -59,24 +59,6 @@ npm run test:functional
 npm run test:integration
 ```
 
-### Run Specific Test File:
-```bash
-npx playwright test src/tests/login.spec.ts
-npx playwright test src/tests/api.spec.ts
-npx playwright test src/tests/home.spec.ts
-npx playwright test src/tests/book-summary.spec.ts
-```
-
-### Run Specific Test by Name:
-```bash
-# By test case ID
-npx playwright test -g "TC1"
-npx playwright test -g "TC13"
-
-# Run multiple specific tests
-npx playwright test -g "TC1|TC3|TC6"
-```
-
 ### Development & Debugging:
 ```bash
 # Run with UI Mode (visual test runner)
@@ -114,30 +96,6 @@ The mocking system is configured in:
 
 ---
 
-## 🎭 Test Details
-
-### TC1-TC3: Login Validation Tests
-- Validate form field requirements
-- Check button states
-- No external dependencies
-
-### TC4-TC8: Book Display & Search Tests
-- **Uses MOCKED data** for reliability
-- Tests book count, search, and prices
-- Independent of BookCart API
-
-### TC9-TC10: Shopping Cart Tests
-- Empty cart validation
-- Navigation flow testing
-- Uses actual BookCart UI
-
-### TC11: API Health Check
-- Validates BookCart API endpoint
-- Checks HTTP 200 response
-- Direct API call (no UI)
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -155,15 +113,13 @@ idelsoft_test/
 │   │   └── BookSummaryPage.ts     # Book detail page objects
 │   └── fixtures/
 │       ├── mock-data.ts           # Mock book & category data
-│       ├── api-mocks.ts           # API mocking setup
-│       └── README.md              # Mocking documentation
+│       └── api-mocks.ts           # API mocking setup
 ├── .github/
 │   └── workflows/
 │       └── playwright-tests.yml   # CI/CD pipeline
 ├── playwright.config.ts           # Playwright configuration
 ├── tsconfig.json                  # TypeScript configuration
 ├── package.json                   # Dependencies & scripts
-├── Test cases for book site - Hoja 1.csv  # Test plan
 └── README.md                      # This file
 ```
 
@@ -257,46 +213,6 @@ Configuration file: `playwright.config.ts`
 
 ---
 
-## 📝 Notes
-
-- Tests TC1-TC3, TC9-TC11 require the BookCart website to be accessible
-- Tests TC4-TC8 use mocked data and are independent of the actual API
-- All test cases match the specifications in `Test cases for book site - Hoja 1.csv`
-
----
-
-## 🎯 Test Execution Summary
-
-**Total Tests: 14**
-- **UI Tests**: 10 (TC1-TC10)
-  - Login Tests: 3 (TC1-TC3)
-  - Home Page Tests: 4 (TC4-TC6, TC8)
-  - Book Summary Tests: 3 (TC7, TC9-TC10)
-- **API Tests**: 4 (TC11-TC14)
-- **Smoke Tests**: 6 (TC3, TC6, TC9, TC10, TC13, TC14)
-- **Integration Tests**: 1 (TC9)
-
-### Quick Commands:
-
-```bash
-# Run all tests
-npm test
-
-# Quick smoke test (6 tests, ~8s)
-npm run test:smoke
-
-# Run UI tests only
-npm run test:ui
-
-# Run API tests only
-npm run test:api
-
-# View HTML report
-npm run test:report
-```
-
----
-
 ## 🔧 CI/CD Integration
 
 ### GitHub Actions Reporter
@@ -377,17 +293,6 @@ npx tsc --noEmit
 - [Playwright Documentation](https://playwright.dev)
 - [GitHub Actions Reporter](https://github.com/estruyf/playwright-github-actions-reporter)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-
----
-
-## 👥 Contributing
-
-1. Clone the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests: `npm test`
-5. Commit and push
-6. Open a pull request
 
 ---
 
