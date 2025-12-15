@@ -54,7 +54,6 @@ jobs:
           fi
           
           echo "🎭 Running Playwright tests with tag: $TEST_TAG"
-          echo "This will execute @ui, @api, and @integration tagged tests"
           
           case "$TEST_TAG" in
             all)
