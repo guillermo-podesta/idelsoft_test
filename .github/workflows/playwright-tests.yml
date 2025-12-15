@@ -57,31 +57,31 @@ jobs:
           
           case "$TEST_TAG" in
             all)
-              echo "Running all 14 tests (includes @ui, @api, @integration)"
+              echo "Running all tests"
               npm test
               ;;
             ui)
-              echo "Running @ui tests (10 tests)"
+              echo "Running @ui tests"
               npm run test:ui
-              ;;
+              ;;  
             api)
-              echo "Running @api tests (4 tests)"
+              echo "Running @api tests"
               npm run test:api
               ;;
             smoke)
-              echo "Running @smoke tests (6 tests)"
+              echo "Running @smoke tests"
               npm run test:smoke
               ;;
             regression)
-              echo "Running @regression tests (10 tests)"
+              echo "Running @regression tests"
               npm run test:regression
               ;;
             functional)
-              echo "Running @functional tests (11 tests)"
+              echo "Running @functional tests"
               npm run test:functional
               ;;
             integration)
-              echo "Running @integration tests (1 test)"
+              echo "Running @integration tests"
               npm run test:integration
               ;;
           esac
